@@ -21,7 +21,9 @@ First, clone this project into your working machine whever you want the script t
 
 `git clone https://github.com/ptrang127/tesla_price_monitor.git`
 
-Locate the following snippets of code:
+Select the folder based on your host OS (`windows` or `raspbian`).
+
+Locate the following snippets of code in `tesla.py`.
 
 ```
 server.login('username@domain.com', "password")
@@ -37,14 +39,19 @@ server.sendmail(
     )
 ```
 
-Replace the emails with your preferred email and set your password. The script is using `gmail` as the default email protocol. Save the file.
+Replace the emails with your preferred email and set your password. The script is using `gmail` as the default email protocol. Save the file. 
 
-The chromedrivers for each platform are different (Windows, Max, Linux) use the appropriate folder.
+In the future, I will update the project to allow for the email and password to be passed as command line arguments like this:
+
+```
+python tesla.py email password
+```
+
+*The chromedrivers for each platform are different (Windows, Raspbian) so make sure to use the appropriate folder.*
 
 ***
 
 ### Windows
-For Windows users, navigate to the `/windows` folder and locate the `tesla.py` script.
 
 Open your `command prompt` and navigate to the `tesla_price_monitor\windows\` folder. From there, run the command:
 
@@ -57,7 +64,6 @@ If you would like to schedule this script, look into Windows Task Scheduler or W
 ***
 
 ### Raspbian
-For Raspberry Pi users, navigate to the `/raspberrypi` folder and locate the `tesla.py` script.
 
 Open your `terminal` and navigate to the `tesla_price_monitor\raspberrypi\` folder. From there, run the command:
 
@@ -80,3 +86,4 @@ For more help with `cronjob` scheduling, check out [Crontab Guru](https://cronta
 ## Things I learned
 1. scraping dynamic content is rough
 2. debugging cronjob sucks
+3. vscode is great for things other than typescript
