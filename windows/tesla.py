@@ -7,16 +7,13 @@ import os
 import smtplib
 
 # function used to send email to yourself
-
-
 def send_mail(email_body):
     server = smtplib.SMTP('smtp.gmail.com', 587)
     server.ehlo()
     server.starttls()
     server.ehlo()
 
-    # replace these fields with your email username and password
-    server.login('username@domain.com', "password")
+    server.login('username@domain.com', "password") # replace these fields with your email username and password
 
     subject = "Tesla Price Notification!"
 
@@ -30,16 +27,15 @@ def send_mail(email_body):
 
     server.quit()
 
-
 # options of the webdriver
 options = webdriver.ChromeOptions()
 options.add_argument('--ignore-certificate-errors')
 options.add_argument('--incognito')
+options.add_argument('--disable-gpu')
 options.add_argument('--headless')  # don't actually open a browser
 
 # configure chromedriver location
 current_path = os.getcwd()  # get the current working directory
-# locate the chromedriver
 chromedriver_location = str(current_path) + "/chromedriver/chromedriver.exe"
 driver = webdriver.Chrome(chromedriver_location, options=options)
 
@@ -50,31 +46,29 @@ page_source = driver.page_source
 soup = BeautifulSoup(page_source, "html.parser")
 
 # find all the <p> tags which specific classes (name and pricing content use these classes)
-# find all p tags with specific class
-configurations = soup.find_all(
-    'p', class_="group--options_block--name text-loader--content")
-prices = soup.find_all(
-    'p', class_="group--options_block-container_price group--options_block-option_price text-loader--content price-not-included")
+configurations = soup.find_all('p', class_="group--options_block--name text-loader--content")
+prices = soup.find_all('p', class_="group--options_block-container_price group--options_block-option_price text-loader--content price-not-included")
 
 email_body = ""
-price_change = False  # boolean to check if the price changed from the last check
+price_change = False # boolean to check if the price changed from the last check
+log = ''
 
 for configuration, price in zip(configurations, prices):
 
     configuration = configuration.get_text()
 
-    cost = price.get_text()  # used in msg
+    cost = price.get_text() # used in msg
 
-    dollars = price.get_text()  # get the string price ("$35,000")
-    dollars = dollars.replace(",", "")  # remove commas
-    dollars = dollars.replace("$", "")  # remove dollar sign
+    dollars = price.get_text() # get the string price ("$35,000")
+    dollars = dollars.replace(",", "") # remove commas
+    dollars = dollars.replace("$", "") # remove dollar sign
 
     current_price = int(dollars)
-
+    
     db_file = configuration.replace(" ", "_")
     db_file = "./db/" + db_file.lower() + ".json"
 
-    date = date.today()  # date YYYY-MM-DD
+    date = date.today() # date YYYY-MM-DD
     string_date = str(date)
 
     with open(db_file, 'r') as read_file:
@@ -85,16 +79,14 @@ for configuration, price in zip(configurations, prices):
     if last_price > current_price:
 
         price_change = True
-        email_body += "The " + configuration + " Model 3 has dropped in price! It is now " + \
-            cost + ". The previous price was " + \
-            "${:,}".format(last_price) + ".\n\n"
-
+        email_body += "The " + configuration + " Model 3 has decreased in price! It is now " + cost + ". The previous price was " + "${:,}".format(last_price) + ".\n\n"
+        log += configuration + " decreased\n"
+        
     elif last_price < current_price:
 
         price_change = True
-        email_body += "The " + configuration + " Model 3 has increased in price! It is now " + \
-            cost + ". The previous price was " + \
-            "${:,}".format(last_price) + ".\n\n"
+        email_body += "The " + configuration + " Model 3 has increased in price! It is now " + cost + ". The previous price was " + "${:,}".format(last_price) + ".\n\n"
+        log += configuration + " increased\n"
 
     db['history'].append({"price": current_price, "date": string_date})
 
