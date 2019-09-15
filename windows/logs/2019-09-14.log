@@ -1,0 +1,12 @@
+18:05:02 DEBUG POST http://127.0.0.1:51348/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--ignore-certificate-errors", "--disable-gpu", "--headless"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--ignore-certificate-errors", "--disable-gpu", "--headless"]}}}
+18:05:02 DEBUG Starting new HTTP connection (1): 127.0.0.1:51348
+18:05:06 DEBUG http://127.0.0.1:51348 "POST /session HTTP/1.1" 200 680
+18:05:06 DEBUG Finished Request
+18:05:06 DEBUG POST http://127.0.0.1:51348/session/2f3ac941f4d63259312c3375c87b03fb/url {"url": "https://www.tesla.com/model3/design"}
+18:05:10 DEBUG http://127.0.0.1:51348 "POST /session/2f3ac941f4d63259312c3375c87b03fb/url HTTP/1.1" 200 14
+18:05:10 DEBUG Finished Request
+18:05:10 DEBUG GET http://127.0.0.1:51348/session/2f3ac941f4d63259312c3375c87b03fb/source {}
+18:05:10 DEBUG http://127.0.0.1:51348 "GET /session/2f3ac941f4d63259312c3375c87b03fb/source HTTP/1.1" 200 263764
+18:05:10 DEBUG Finished Request
+18:05:10 INFO Successfully scraped Tesla website
+18:05:10 INFO No prices changes
