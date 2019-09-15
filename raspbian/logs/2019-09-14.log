@@ -1,0 +1,15 @@
+18:39:53 DEBUG POST http://127.0.0.1:32923/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "platformName": "any", "goog:chromeOptions": {"extensions": [], "args": ["--ignore-certificate-errors", "--disable-gpu"]}}}, "desiredCapabilities": {"browserName": "chrome", "version": "", "platform": "ANY", "goog:chromeOptions": {"extensions": [], "args": ["--ignore-certificate-errors", "--disable-gpu"]}}}
+18:39:53 DEBUG Starting new HTTP connection (1): 127.0.0.1:32923
+18:39:57 DEBUG http://127.0.0.1:32923 "POST /session HTTP/1.1" 200 752
+18:39:57 DEBUG Finished Request
+18:39:57 DEBUG POST http://127.0.0.1:32923/session/9193790ea362e28aea758d86e77e508b/url {"url": "https://www.tesla.com/model3/design", "sessionId": "9193790ea362e28aea758d86e77e508b"}
+18:40:38 DEBUG http://127.0.0.1:32923 "POST /session/9193790ea362e28aea758d86e77e508b/url HTTP/1.1" 200 72
+18:40:38 DEBUG Finished Request
+18:40:38 DEBUG GET http://127.0.0.1:32923/session/9193790ea362e28aea758d86e77e508b/source {"sessionId": "9193790ea362e28aea758d86e77e508b"}
+18:40:39 DEBUG http://127.0.0.1:32923 "GET /session/9193790ea362e28aea758d86e77e508b/source HTTP/1.1" 200 281168
+18:40:39 DEBUG Finished Request
+18:40:39 DEBUG DELETE http://127.0.0.1:32923/session/9193790ea362e28aea758d86e77e508b {"sessionId": "9193790ea362e28aea758d86e77e508b"}
+18:40:39 DEBUG http://127.0.0.1:32923 "DELETE /session/9193790ea362e28aea758d86e77e508b HTTP/1.1" 200 72
+18:40:39 DEBUG Finished Request
+18:40:40 INFO Successfully scraped Tesla website
+18:40:40 INFO No prices changes

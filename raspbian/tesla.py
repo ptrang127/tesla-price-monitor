@@ -62,6 +62,7 @@ options.add_argument('--disable-gpu')
 # configure chromedriver location
 current_path = os.getcwd() # get the current working directory
 chromedriver_location = str(current_path) + "/chromedriver/chromedriver"
+os.chmod(chromedriver_location, 0o755)
 driver = webdriver.Chrome(chromedriver_location, options=options)
 
 driver.get('https://www.tesla.com/model3/design')
