@@ -48,7 +48,7 @@ Then configure the following command to your needs:
 
 `python tesla.py -u your_email@domain.com -p your_password -r recipient_1@domain.com recipient_2@domain.com`
 
-This command runs the script with your email account as `your_email@domain.com`, the password to that account as `your_password`, and a list of recipients as `recipient_1@domain.com` and `recipient_2@domain.com`. Replace these fields for your specific use case. The script checks Tesla's website and writes data into the mock database. If there are any changes, an email will be sent from `your_email@domain.com` to all emails specified with the `-r` flag.
+This command runs the script with your email account as `your_email@domain.com`, the password to that account as `your_password`, and a list of recipients as `recipient_1@domain.com` and `recipient_2@domain.com`. Replace these fields for your specific use case. The script checks Tesla's website and writes data into the mock database. If there are any changes, an email will be sent from `your_email@domain.com` to all emails specified with the `-r` flag. You can add as many recipients as you'd like.
 
 ***
 
