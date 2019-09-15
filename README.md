@@ -21,7 +21,7 @@ The script then appends the current prices in a mock database in the form of  `.
 ## Setup
 First, clone this project into your working machine or wherever you want the script to be run.
 
-`git clone https://github.com/ptrang127/tesla_price_monitor.git`
+`git clone https://github.com/ptrang127/tesla-price-monitor.git`
 
 Select the folder based on your host OS (`windows` or `raspbian`).
 
@@ -42,7 +42,7 @@ Open your `command prompt` or `terminal` and navigate to the appropriate folder 
 
 *The chromedrivers for each platform are different (Windows, Raspbian) so make sure to use the appropriate folder.*
 
-`cd path/to/tesla_price_monitor/your_platform`
+`cd path/to/tesla-price-monitor/your_platform`
 
 Then configure the following command to your needs:
 
@@ -66,7 +66,7 @@ This script is different because Raspbian uses `chromium` instead of `google-chr
 If you would like to schedule this script, look into setting up a `cronjob`. For your `cronjob`, you must include `export DISPLAY =:0;` in your command as follows:
 
 ```
-0 12 * * * export DISPLAY=:0; cd /path/to/tesla_price_monitor/raspberrypi && /path/to/python /path/to/tesla_monitor/raspberrypi/tesla.py -u your_email@domain.com -p your_password -r recipient@domain.com
+0 12 * * * export DISPLAY=:0; cd /path/to/tesla-price-monitor/raspbian && /path/to/python /path/to/tesla-price-monitor/raspbian/tesla.py -u your_email@domain.com -p your_password -r recipient@domain.com
 ```
 
 This `cronjob` runs the script every day at 12PM.
