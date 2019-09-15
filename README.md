@@ -42,13 +42,15 @@ Open your `command prompt` or `terminal` and navigate to the appropriate folder 
 
 *The chromedrivers for each platform are different (Windows, Raspbian) so make sure to use the appropriate folder.*
 
-`cd path\to\tesla_price_monitor\windows`
+`cd path/to/tesla_price_monitor/your_platform`
 
-Then run the following command
+Then configure the following command to your needs:
 
 `python tesla.py -u your_email@domain.com -p your_password -r recipient_1@domain.com recipient_2@domain.com`
 
 This command runs the script with your email account as `your_email@domain.com`, the password to that account as `your_password`, and a list of recipients as `recipient_1@domain.com` and `recipient_2@domain.com`. Replace these fields for your specific use case. The script checks Tesla's website and writes data into the mock database. If there are any changes, an email will be sent from `your_email@domain.com` to all emails specified with the `-r` flag.
+
+***
 
 #### Windows
 
@@ -64,7 +66,7 @@ This script is different because Raspbian uses `chromium` instead of `google-chr
 If you would like to schedule this script, look into setting up a `cronjob`. For your `cronjob`, you must include `export DISPLAY =:0;` in your command as follows:
 
 ```
-0 12 * * * export DISPLAY=:0; cd /path/to/tesla_price_monitor/raspberrypi && /path/to/python3 /path/to/tesla_monitor/raspberrypi/tesla.py -u your_email@domain.com -p your_password -r recipient@domain.com
+0 12 * * * export DISPLAY=:0; cd /path/to/tesla_price_monitor/raspberrypi && /path/to/python /path/to/tesla_monitor/raspberrypi/tesla.py -u your_email@domain.com -p your_password -r recipient@domain.com
 ```
 
 This `cronjob` runs the script every day at 12PM.
