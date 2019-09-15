@@ -106,13 +106,13 @@ for configuration, price in zip(configurations, prices):
     if last_price > current_price:
 
         price_change = True
-        email_body += "The " + configuration + " Model 3 has decreased in price! It is now " + cost + ". The previous price was " + cost + ".\n\n"
+        email_body += "The " + configuration + " Model 3 has decreased in price! It is now " + cost + ". The previous price was " + "${:,}".format(last_price) + ".\n\n"
         changes.append(configuration + " decreased to " + cost)
         
     elif last_price < current_price:
 
         price_change = True
-        email_body += "The " + configuration + " Model 3 has increased in price! It is now " + cost + ". The previous price was " + cost + ".\n\n"
+        email_body += "The " + configuration + " Model 3 has increased in price! It is now " + cost + ". The previous price was " + "${:,}".format(last_price) + ".\n\n"
         changes.append(configuration + " increased to " + cost)
 
     db['history'].append({"price": current_price, "date": string_date})
